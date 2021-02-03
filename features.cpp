@@ -86,15 +86,10 @@ void MatrixFeatures::ReadCOO1()
 
 	mat = coo;
 }
+
 void MatrixFeatures::PrintCSRByRow(INT num)
 {
-	for(INT i=0;i<num;i++)
-	{
-		INT begin_idx = mat.row_vec[i];
-		INT num_entry = mat.row_vec[i+1] - begin_idx;
-		for(INT j=0;j<num_entry;j++)
-			std::cout<<i<<"   "<<mat.col_vec[begin_idx+j]<<"   "<<mat.val[begin_idx+j]<<std::endl;
-	}
+	mat.PrintPartialMat(num);
 }
 
 void MatrixFeatures::DumpFeatures2JsonFile(const std::string json_file)

@@ -19,6 +19,9 @@ public:
 	// destructor 
 	virtual ~SparseMat(){}
 
+	// print partial matriax for verification, according to the specific matrix type in the derived class
+	virtual void  PrintPartialMat(INT num)=0;
+
 	INT GetRow() const;
 
 	INT GetCol() const;
@@ -55,8 +58,10 @@ public:
 	SpaCOO & operator= (const SpaCOO & coo);
 
 	// destructor 
-	~SpaCOO(){}
+	virtual ~SpaCOO(){}
 
+	// overload the virtual function from base class, and print num entries in coo matrix 
+	virtual void  PrintPartialMat(INT num);
 
 	// row vector : nnz
 	std::vector<INT> row_vec;
@@ -82,7 +87,10 @@ public:
 	SpaCSR & operator=(const SpaCOO & coo);
 
 	// destructor 
-	~SpaCSR(){}
+	virtual ~SpaCSR(){}
+
+	// overload the virtual function from base class, and print num rows in csr matrix 
+	virtual void  PrintPartialMat(INT num);
 
 	// row vector : row+1
 	std::vector<INT> row_vec;

@@ -44,6 +44,11 @@ SpaCOO & SpaCOO::operator=(const SpaCOO & coo)
 	return *this;
 }
 
+void SpaCOO::PrintPartialMat(INT num)
+{
+	for(INT i=0;i<num;i++)
+		std::cout<<row_vec[i]<<"   "<<row_vec[i]<<"   "<<val[i]<<std::endl;
+}
 
 //==========================================================
 // class SpaCSR
@@ -141,4 +146,14 @@ SpaCSR & SpaCSR::operator=(const SpaCOO & coo)
 	return *this;
 }
 
+void SpaCSR::PrintPartialMat(INT num)
+{
+	for(INT i=0;i<num;i++)
+	{
+		INT begin_idx = row_vec[i];
+		INT num_entry = row_vec[i+1] - begin_idx;
+		for(INT j=0;j<num_entry;j++)
+			std::cout<<i<<"   "<<col_vec[begin_idx+j]<<"   "<<val[begin_idx+j]<<std::endl;
+	}
+}
 
