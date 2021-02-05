@@ -1,5 +1,7 @@
 #include  "sparsemat.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 //==========================================================
 // class SparseMat
@@ -50,6 +52,78 @@ void SpaCOO::PrintPartialMat(INT num)
 		std::cout<<row_vec[i]<<"   "<<row_vec[i]<<"   "<<val[i]<<std::endl;
 }
 
+void SpaCOO::ReadMat0(std::string file_name)
+{
+	std::ifstream myfile(file_name);
+	if(!myfile.is_open())
+	{
+		std::cout<<"can't open the matrix file!"<<std::endl;
+		exit(1);
+	}
+
+	std::string line;
+	getline(myfile,line);
+	std::istringstream split_line(line);
+	split_line >> row >> col >> nnz;
+	std::vector<INT> tmp_row_vec(nnz);
+	std::vector<INT> tmp_col_vec(nnz);
+	std::vector<DOUBLE> tmp_val(nnz);
+
+	for(INT i=0;i<nnz;i++)
+	{
+		getline(myfile,line);
+		std::istringstream tmp_line(line);
+		tmp_line >> tmp_row_vec[i] >> tmp_col_vec[i] >> tmp_val[i];
+	}
+
+	getline(myfile,line);
+	if(!myfile.eof())
+		std::cout<<"Reading file is not finished!"<< std::endl;
+	
+	myfile.close();
+
+	row_vec.swap(tmp_row_vec);
+	col_vec.swap(tmp_col_vec);
+	val.swap(tmp_val);
+}
+
+void SpaCOO::ReadMat1(std::string file_name)
+{
+	std::ifstream myfile(file_name);
+	if(!myfile.is_open())
+	{
+		std::cout<<"can't open the matrix file!"<<std::endl;
+		exit(1);
+	}
+
+	std::string line;
+	getline(myfile,line);
+	std::istringstream split_line(line);
+	split_line >> row >> col >> nnz;
+	std::vector<INT> tmp_row_vec(nnz);
+	std::vector<INT> tmp_col_vec(nnz);
+	std::vector<DOUBLE> tmp_val(nnz);
+
+	for(INT i=0;i<nnz;i++)
+	{
+		getline(myfile,line);
+		std::istringstream tmp_line(line);
+		INT tmp_i,tmp_j;
+		tmp_line >> tmp_i >> tmp_j >> tmp_val[i];
+		tmp_row_vec[i] = tmp_i - 1;
+		tmp_col_vec[i] = tmp_j - 1;
+	}
+
+	getline(myfile,line);
+	if(!myfile.eof())
+		std::cout<<"Reading file is not finished!"<< std::endl;
+	
+	myfile.close();
+
+	row_vec.swap(tmp_row_vec);
+	col_vec.swap(tmp_col_vec);
+	val.swap(tmp_val);
+}
 //==========================================================
 // class SpaCSR
 

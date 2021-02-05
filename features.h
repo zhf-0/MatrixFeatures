@@ -23,10 +23,10 @@ public:
 	// destructor 
 	~MatrixFeatures(){}
 
-	// read matrix from coo, index begin with 0
+	// read matrix from coo, index in file begin with 0
 	void ReadCOO0();
 
-	// read matrix from coo, index begin with 1
+	// read matrix from coo, index in file begin with 1
 	void ReadCOO1();
 
 	// print the CSR matrix: from row 0 to row num

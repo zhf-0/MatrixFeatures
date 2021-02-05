@@ -1,6 +1,7 @@
 #ifndef sparsemat_h
 #define sparsemat_h
 #include <vector>
+#include <string>
 #include "base.h"
 
 class SparseMat
@@ -62,6 +63,13 @@ public:
 
 	// overload the virtual function from base class, and print num entries in coo matrix 
 	virtual void  PrintPartialMat(INT num);
+
+	// read matrix from file, index in file begin with 0
+	void ReadMat0(std::string file_name);
+
+	// read matrix from file, index in file begin with 1
+	void ReadMat1(std::string file_name);
+
 
 	// row vector : nnz
 	std::vector<INT> row_vec;
