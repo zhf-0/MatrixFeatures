@@ -3,7 +3,9 @@ Extract Matrix features
 
 ## 文件与目录
 文件与目录的含义为：
-- `doc/`：该目录下包括一个 `features.pdf`文件，里面记录了需要提取的特征
+- `doc/`：该目录下包括一系列文件
+	- `features.pdf`：记录了需要提取的特征
+	- `assignment-vs-move-assignment.png`：对比是否添加`move`函数的效果
 - `sparsemat.cpp sparsemat.h`：定义基础数据结构的程序，包括稀疏矩阵基类，派生类`COO`和派生类`CSR`
 - `features.cpp features.h`：基于稀疏矩阵类，定义的特征提取类程序
 - `base.h`：定义了全局宏，目前只是用`INT`和`DOUBLE`来分别代替`int`和`double`，后续可能会加上一些公用函数
@@ -47,4 +49,4 @@ for(...){
 ```
 即可。
 
-以上内容只是介绍，程序已经配置好的，不用再关心这部分内容。
+以上内容只是介绍，程序已经配置好了，不用再关心这部分内容。
