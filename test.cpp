@@ -5,6 +5,8 @@
 #include "json.hpp"
 #include <iomanip>
 
+#include "sparsemat.h"
+
 void TestFileReading()
 {
 	std::ifstream myfile("matrix.dat");
@@ -51,9 +53,29 @@ void TestJSON()
 	jsonfile << std::setw(4) << features << std::endl;
 }
 
+SpaCOO foo()
+{
+	std::cout<<"enter foo() function"<<std::endl;
+	std::string file="matrix.dat";
+	SpaCOO coo;
+	coo.ReadMat0(file);
+	std::cout<<"leave foo() function"<<std::endl;
+	return coo;
+}
+
+void TestMatrix()
+{
+	/* SpaCOO a; */
+	SpaCOO a(3,3,4);
+	a = foo();
+	/* SpaCOO a(foo()); */
+	std::cout<<a.GetRow()<<std::endl;
+}
+
 int main()
 {
 	/* TestFileReading(); */
-	TestJSON();
+	/* TestJSON(); */
+	TestMatrix();
 	return 0;
 }

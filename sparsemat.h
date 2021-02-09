@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include "base.h"
+#include <iostream>
 
 class SparseMat
 {
@@ -14,8 +15,15 @@ public:
 	// copy constructor
 	SparseMat(const SparseMat & spamat):val(spamat.val),row(spamat.row),col(spamat.col),nnz(spamat.nnz){}
 
-	// copy assignment constructor
+	// move copy constructor
+	SparseMat(SparseMat &&  spamat):row(spamat.row),col(spamat.col),nnz(spamat.nnz)
+	{val.swap(spamat.val);}
+
+	// copy assignment operator
 	SparseMat & operator= (const SparseMat & spamat);
+
+	// move copy assignment operator
+	SparseMat & operator= (SparseMat && spamat);
 
 	// destructor 
 	virtual ~SparseMat(){}
@@ -55,8 +63,18 @@ public:
 	// copy constructor
 	SpaCOO(const SpaCOO & coo):SparseMat(coo),row_vec(coo.row_vec),col_vec(coo.col_vec){}
 
-	// copy assignment constructor
+	// move copy constructor
+	SpaCOO(SpaCOO && coo):SparseMat(coo)
+	{
+		row_vec.swap(coo.row_vec);
+		col_vec.swap(coo.col_vec);
+	}
+
+	// copy assignment operator
 	SpaCOO & operator= (const SpaCOO & coo);
+
+	// move copy assignment operator
+	SpaCOO & operator= (SpaCOO && coo);
 
 	// destructor 
 	virtual ~SpaCOO(){}
@@ -90,9 +108,19 @@ public:
 	// copy constructor
 	SpaCSR(const SpaCSR & csr):SparseMat(csr),row_vec(csr.row_vec),col_vec(csr.col_vec){}
 
-	// copy assignment constructor
+	// move copy constructor 
+	SpaCSR(SpaCSR && csr):SparseMat(csr)
+	{
+		row_vec.swap(csr.row_vec);
+		col_vec.swap(csr.col_vec);
+	}
+
+	// copy assignment operator
 	SpaCSR & operator=(const SpaCSR & csr);
 	SpaCSR & operator=(const SpaCOO & coo);
+
+	// move copy assignment operator
+	SpaCSR & operator=(SpaCSR && csr);
 
 	// destructor 
 	virtual ~SpaCSR(){}

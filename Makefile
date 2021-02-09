@@ -5,11 +5,12 @@ obj= features.o sparsemat.o
 main:main.cpp $(obj) 	
 	$(CC) $(CXXFLAGS) $^ -o $@
 
+test:test.cpp $(obj)
+	$(CC) $(CXXFLAGS) $^ -o $@
+
 $(obj):%.o:%.cpp 
 	$(CC) $(CXXFLAGS) -c $^ -o $@
 
-test:test.cpp
-	$(CC) $(CXXFLAGS) $^ -o $@
 
 
 .PHONY:clean

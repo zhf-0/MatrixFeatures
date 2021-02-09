@@ -17,6 +17,19 @@ SparseMat & SparseMat::operator= (const SparseMat & spamat)
 	return *this;
 }
 
+SparseMat & SparseMat::operator= (SparseMat && spamat)
+{
+	if(this == &spamat)
+		return *this;
+
+	row = spamat.row;
+	col = spamat.col;
+	nnz = spamat.nnz;
+	val.swap(spamat.val);
+	return *this;
+}
+
+
 INT SparseMat::GetRow() const
 {
 	return row;
@@ -43,6 +56,17 @@ SpaCOO & SpaCOO::operator=(const SpaCOO & coo)
 	SparseMat::operator=(coo);
 	row_vec = coo.row_vec;
 	col_vec = coo.col_vec;
+	return *this;
+}
+
+SpaCOO & SpaCOO::operator=(SpaCOO && coo)
+{
+	if(this == &coo)
+		return *this;
+
+	SparseMat::operator=(coo);
+	row_vec.swap(coo.row_vec);
+	col_vec.swap(coo.col_vec);
 	return *this;
 }
 
@@ -217,6 +241,17 @@ SpaCSR & SpaCSR::operator=(const SpaCOO & coo)
 		}
 	}
 
+	return *this;
+}
+
+SpaCSR & SpaCSR::operator=(SpaCSR && csr)
+{
+	if(this == &csr)
+		return *this;
+
+	SparseMat::operator=(csr);
+	row_vec.swap(csr.row_vec);
+	col_vec.swap(csr.col_vec);
 	return *this;
 }
 
