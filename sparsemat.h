@@ -22,7 +22,7 @@ public:
 	// copy assignment operator
 	SparseMat & operator= (const SparseMat & spamat);
 
-	// move copy assignment operator
+	// move assignment operator
 	SparseMat & operator= (SparseMat && spamat);
 
 	// destructor 
@@ -73,7 +73,7 @@ public:
 	// copy assignment operator
 	SpaCOO & operator= (const SpaCOO & coo);
 
-	// move copy assignment operator
+	// move assignment operator
 	SpaCOO & operator= (SpaCOO && coo);
 
 	// destructor 
@@ -119,7 +119,7 @@ public:
 	SpaCSR & operator=(const SpaCSR & csr);
 	SpaCSR & operator=(const SpaCOO & coo);
 
-	// move copy assignment operator
+	// move assignment operator
 	SpaCSR & operator=(SpaCSR && csr);
 
 	// destructor 
