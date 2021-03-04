@@ -73,7 +73,7 @@ SpaCOO & SpaCOO::operator=(SpaCOO && coo)
 void SpaCOO::PrintPartialMat(INT num)
 {
 	for(INT i=0;i<num;i++)
-		std::cout<<row_vec[i]<<"   "<<row_vec[i]<<"   "<<val[i]<<std::endl;
+		std::cout<<row_vec[i]<<"   "<<col_vec[i]<<"   "<<val[i]<<std::endl;
 }
 
 void SpaCOO::ReadMat0(std::string file_name)
