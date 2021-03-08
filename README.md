@@ -7,6 +7,7 @@ Extract Matrix features
 	- `features.pdf`：记录了需要提取的特征
 	- `assignment-vs-move-assignment.png`：对比是否添加`move`函数的效果
 - `sparsemat.cpp sparsemat.h`：定义基础数据结构的程序，包括稀疏矩阵基类，派生类`COO`和派生类`CSR`
+- `tensor.cpp tensor.h`：定义稠密矩阵的相关类，目前只定义了向量类`Vec`，以后可以派生出矩阵类，以及更高维的张量类
 - `features.cpp features.h`：基于稀疏矩阵类，定义的特征提取类程序
 - `base.h`：定义了全局宏，目前只是用`INT`和`DOUBLE`来分别代替`int`和`double`，后续可能会加上一些公用函数
 - `main.cpp`：程序的入口，进行具体操作
