@@ -1,6 +1,6 @@
 CC=g++
 CXXFLAGS= -std=c++11 -Wall -g
-obj= features.o sparsemat.o 
+obj= features.o sparsemat.o tensor.o
 
 main:main.cpp $(obj) 	
 	$(CC) $(CXXFLAGS) $^ -o $@

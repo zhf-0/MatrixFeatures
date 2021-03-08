@@ -153,7 +153,7 @@ void SpaCOO::ReadMat1(std::string file_name)
 
 SpaCSR::SpaCSR(const SpaCOO & coo):SparseMat( coo.GetRow(), coo.GetCol(), coo.GetNnz() ), 
 	                         row_vec(coo.GetRow()+1), 
-							 col_vec(coo.GetCol()) 
+							 col_vec(coo.GetNnz()) 
 {
 	row_vec[0] = 0;
 	for(INT i=0;i<nnz;i++)

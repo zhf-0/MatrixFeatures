@@ -96,6 +96,7 @@ public:
 	std::vector<INT> col_vec;
 };
 
+class Vec;
 
 class SpaCSR:public SparseMat
 {
@@ -127,6 +128,9 @@ public:
 
 	// overload the virtual function from base class, and print num rows in csr matrix 
 	virtual void  PrintPartialMat(INT num);
+
+	// overload the operator * for spmv
+	friend Vec operator*(const SpaCSR & csr, const Vec & vec);
 
 	// row vector : row+1
 	std::vector<INT> row_vec;

@@ -4,8 +4,8 @@
 #include <string>
 #include "json.hpp"
 #include <iomanip>
-
 #include "sparsemat.h"
+#include "tensor.h"
 
 void TestFileReading()
 {
@@ -72,10 +72,29 @@ void TestMatrix()
 	std::cout<<a.GetRow()<<std::endl;
 }
 
+void TestSpmv()
+{
+	std::string file="matrix.dat";
+	SpaCOO *coo = new SpaCOO;
+	coo->ReadMat0(file);
+	SpaCSR csr(*coo);
+	delete coo;
+
+	/* SpaCOO coo; */
+	/* coo.ReadMat0(file); */
+	/* SpaCSR csr(coo); */
+
+	Vec b(csr.GetCol(),1.0);
+
+	Vec a = csr * b;
+	a.PrintPartialTensor(5);
+}
+
 int main()
 {
 	/* TestFileReading(); */
 	/* TestJSON(); */
-	TestMatrix();
+	/* TestMatrix(); */
+	TestSpmv();
 	return 0;
 }
