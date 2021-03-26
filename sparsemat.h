@@ -64,7 +64,7 @@ public:
 	SpaCOO(const SpaCOO & coo):SparseMat(coo),row_vec(coo.row_vec),col_vec(coo.col_vec){}
 
 	// move copy constructor
-	SpaCOO(SpaCOO && coo):SparseMat(coo)
+	SpaCOO(SpaCOO && coo):SparseMat(std::move(coo))
 	{
 		row_vec.swap(coo.row_vec);
 		col_vec.swap(coo.col_vec);
@@ -110,7 +110,7 @@ public:
 	SpaCSR(const SpaCSR & csr):SparseMat(csr),row_vec(csr.row_vec),col_vec(csr.col_vec){}
 
 	// move copy constructor 
-	SpaCSR(SpaCSR && csr):SparseMat(csr)
+	SpaCSR(SpaCSR && csr):SparseMat(std::move(csr))
 	{
 		row_vec.swap(csr.row_vec);
 		col_vec.swap(csr.col_vec);

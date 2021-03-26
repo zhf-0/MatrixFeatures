@@ -64,7 +64,7 @@ SpaCOO & SpaCOO::operator=(SpaCOO && coo)
 	if(this == &coo)
 		return *this;
 
-	SparseMat::operator=(coo);
+	SparseMat::operator=(std::move(coo));
 	row_vec.swap(coo.row_vec);
 	col_vec.swap(coo.col_vec);
 	return *this;
@@ -249,7 +249,7 @@ SpaCSR & SpaCSR::operator=(SpaCSR && csr)
 	if(this == &csr)
 		return *this;
 
-	SparseMat::operator=(csr);
+	SparseMat::operator=(std::move(csr));
 	row_vec.swap(csr.row_vec);
 	col_vec.swap(csr.col_vec);
 	return *this;
